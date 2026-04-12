@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>MPIE CODE FROM LECTURES – MPIE.github.io</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-630147fbe0b9ab2b2a517857e522e257.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-4897d45d2f75ed4f519693be625836c5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -182,13 +185,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-5-control-for-other-variables" id="toc-step-5-control-for-other-variables" class="nav-link" data-scroll-target="#step-5-control-for-other-variables">Step 5: Control for other variables</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#lecture-12-difference-in-differences-analysis-for-coverage" id="toc-lecture-12-difference-in-differences-analysis-for-coverage" class="nav-link" data-scroll-target="#lecture-12-difference-in-differences-analysis-for-coverage">Lecture 12: Difference-in-differences analysis for coverage</a>
+  <li><a href="#lecture-10-difference-in-differences-analysis-for-coverage" id="toc-lecture-10-difference-in-differences-analysis-for-coverage" class="nav-link" data-scroll-target="#lecture-10-difference-in-differences-analysis-for-coverage">Lecture 10: Difference-in-differences analysis for coverage</a>
   <ul class="collapse">
   <li><a href="#setting-up-the-data" id="toc-setting-up-the-data" class="nav-link" data-scroll-target="#setting-up-the-data">Setting-up the data</a></li>
   <li><a href="#option-1-difference-in-differences-of-proportions" id="toc-option-1-difference-in-differences-of-proportions" class="nav-link" data-scroll-target="#option-1-difference-in-differences-of-proportions">Option 1: Difference in differences of proportions</a></li>
   <li><a href="#option-2-logistic-regression" id="toc-option-2-logistic-regression" class="nav-link" data-scroll-target="#option-2-logistic-regression">Option 2: Logistic regression</a></li>
   </ul></li>
-  <li><a href="#lecture-16-analyzing-equity" id="toc-lecture-16-analyzing-equity" class="nav-link" data-scroll-target="#lecture-16-analyzing-equity">Lecture 16: Analyzing equity</a>
+  <li><a href="#lecture-15-analyzing-equity" id="toc-lecture-15-analyzing-equity" class="nav-link" data-scroll-target="#lecture-15-analyzing-equity">Lecture 15: Analyzing equity</a>
   <ul class="collapse">
   <li><a href="#new-packages-needed" id="toc-new-packages-needed" class="nav-link" data-scroll-target="#new-packages-needed">new packages needed</a></li>
   <li><a href="#make-concentration-index-plot" id="toc-make-concentration-index-plot" class="nav-link" data-scroll-target="#make-concentration-index-plot">make concentration index plot</a></li>
@@ -229,73 +232,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="r-users-may-need-to-installload-libraries">R users may need to install/load libraries</h3>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readstata13"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readstata13"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"survey"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"freqtables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"freqtables"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-5-explore-variables" class="level3">
 <h3 class="anchored" data-anchor-id="step-5-explore-variables">Step 5: explore variables</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>des m3<span class="sc">*</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>des m3<span class="sc">*</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ta m3a</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ta m3b</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ta m3c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ta m3c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>m3a)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>m3a))</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>m3b)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>m3b))</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>m3c)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>m3c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>m3c))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-6-create-sba-variable" class="level3">
 <h3 class="anchored" data-anchor-id="step-6-create-sba-variable">Step 6: create SBA variable</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gen sba<span class="ot">=</span><span class="dv">0</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gen sba<span class="ot">=</span><span class="dv">0</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>replace sba<span class="ot">=</span><span class="dv">1</span> <span class="cf">if</span> m3a<span class="sc">==</span><span class="dv">1</span> <span class="sc">|</span> m3b<span class="sc">==</span><span class="dv">1</span> <span class="sc">|</span> m3c<span class="sc">==</span><span class="dv">1</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>replace sba<span class="ot">=</span>. <span class="cf">if</span> m3a<span class="sc">==</span><span class="dv">9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>replace sba<span class="ot">=</span>. <span class="cf">if</span> m3a<span class="sc">==</span><span class="dv">9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sba <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sba <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sba[data<span class="sc">$</span>m3a<span class="sc">==</span><span class="dv">1</span> <span class="sc">|</span> data<span class="sc">$</span>m3b<span class="sc">==</span><span class="dv">1</span> <span class="sc">|</span> data<span class="sc">$</span>m3c<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sba[data<span class="sc">$</span>m3a<span class="sc">==</span><span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sba[data<span class="sc">$</span>m3a<span class="sc">==</span><span class="dv">9</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-7-check-sba-variable" class="level3">
 <h3 class="anchored" data-anchor-id="step-7-check-sba-variable">Step 7: check SBA variable</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ta sba m3a, mi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ta sba m3a, mi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>sba, data<span class="sc">$</span>m3a, <span class="at">exclude=</span><span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>sba, data<span class="sc">$</span>m3a, <span class="at">exclude=</span><span class="cn">NULL</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-8-label-variable" class="level3">
 <h3 class="anchored" data-anchor-id="step-8-label-variable">Step 8: label variable</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>la var sba</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>la var sba</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>la def yn <span class="dv">1</span><span class="st">"Yes"</span> <span class="dv">0</span><span class="st">"No"</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>la val sba yn</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ta sba</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ta sba</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sba[data<span class="sc">$</span>sba<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">"No"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sba[data<span class="sc">$</span>sba<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">"No"</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>sba[data<span class="sc">$</span>sba<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Yes"</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>sba))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>sba))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -305,32 +308,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="step-3-svyset-your-data">Step 3: svyset your data</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gen nwgt <span class="ot">=</span> v005<span class="sc">/</span><span class="dv">1000000</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>svyset v001 [pweight<span class="ot">=</span>nwgt], <span class="fu">strata</span>(v023) <span class="fu">singleunit</span>(centered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gen nwgt <span class="ot">=</span> v005<span class="sc">/</span><span class="dv">1000000</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>svyset v001 [pweight<span class="ot">=</span>nwgt], <span class="fu">strata</span>(v023) <span class="fu">singleunit</span>(centered)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>wt <span class="ot">&lt;-</span> data<span class="sc">$</span>v005<span class="sc">/</span><span class="dv">1000000</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(v023<span class="sc">!=</span><span class="dv">60</span>) <span class="co"># Only 1 PSU in this cluster which is problem for svyby</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>svydata <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id=</span><span class="sc">~</span>v001,<span class="at">strata=</span><span class="sc">~</span>v023, <span class="at">data=</span>data, <span class="at">weights=</span><span class="sc">~</span>wt,<span class="at">nest=</span><span class="cn">TRUE</span>,<span class="at">survey.lonely.psu =</span> <span class="st">"adjust"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>svydata <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id=</span><span class="sc">~</span>v001,<span class="at">strata=</span><span class="sc">~</span>v023, <span class="at">data=</span>data, <span class="at">weights=</span><span class="sc">~</span>wt,<span class="at">nest=</span><span class="cn">TRUE</span>,<span class="at">survey.lonely.psu =</span> <span class="st">"adjust"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-4-look-at-unweighted-versus-weighted-proportions-run-estimation" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-look-at-unweighted-versus-weighted-proportions-run-estimation">Step 4: Look at unweighted versus weighted proportions &amp; run estimation</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tab v106</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tab v106</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span>tab v106</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop sba</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>prop sba</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop sba</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>estat effects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>estat effects</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>v106))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>v106))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">svytable</span>(<span class="sc">~</span> v106, svydata) )</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">svyby</span>(<span class="sc">~</span>sba, <span class="sc">~</span>v000,  svydata, svymean, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
@@ -338,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(freqtables)</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sba)) <span class="sc">%&gt;%</span> <span class="fu">freq_table</span>(sba)</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">svyby</span>(<span class="sc">~</span>sba, <span class="sc">~</span>v000,  svydata, svymean, <span class="at">na.rm=</span><span class="cn">TRUE</span>, <span class="at">deff=</span><span class="st">"replace"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">svyby</span>(<span class="sc">~</span>sba, <span class="sc">~</span>v000,  svydata, svymean, <span class="at">na.rm=</span><span class="cn">TRUE</span>, <span class="at">deff=</span><span class="st">"replace"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -354,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="use-the-child-recodes-from-nigerias-2008-and-2013-dhs-in-stata-or-r">Use the child recodes from Nigeria’s 2008 and 2013 DHS in Stata or R</h3>
 <p>R users may need to install/load these libraries</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyr"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"survey"</span>)</span>
@@ -370,14 +373,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(labelled)</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-1-create-coverage-indicators-in-both-datasets" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-create-coverage-indicators-in-both-datasets">Step 1: Create coverage indicators (in both datasets)</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>use DHS_Nigeria2008_kids.dta, clear</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>use DHS_Nigeria2008_kids.dta, clear</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>numlabel, add</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>des v005 h11 h13 h31 h31b h32z v024</span>
@@ -401,11 +404,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    tab h13</span>
 <span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    gen ors<span class="ot">=</span><span class="dv">0</span> <span class="cf">if</span> diarrhea<span class="sc">==</span><span class="dv">1</span></span>
 <span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    replace ors<span class="ot">=</span><span class="dv">1</span> <span class="cf">if</span> h13<span class="sc">==</span><span class="dv">2</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    svy<span class="sc">:</span> tab ors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    svy<span class="sc">:</span> tab ors</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#******** REMEMBER TO REPLACE TO YOUR DIRECTORY ********#</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#******** REMEMBER TO REPLACE TO YOUR DIRECTORY ********#</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Household DHS 2008</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>hh_2008 <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"...DHS_Nigeria2008_HH.dta"</span>)</span>
@@ -447,14 +450,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">options</span>(<span class="at">survey.lonely.psu=</span><span class="st">"adjust"</span>)</span>
 <span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">prop.table</span>(<span class="fu">svytable</span>(<span class="sc">~</span>ors, <span class="at">design =</span> svyset_2008))<span class="sc">*</span><span class="dv">100</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">prop.table</span>(<span class="fu">svytable</span>(<span class="sc">~</span>ors, <span class="at">design =</span> svyset_2008))<span class="sc">*</span><span class="dv">100</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-2a-prepare-2008-and-2013-datasets-to-be-combined" class="level3">
 <h3 class="anchored" data-anchor-id="step-2a-prepare-2008-and-2013-datasets-to-be-combined">Step 2a: Prepare 2008 and 2013 datasets to be combined</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span><span class="dv">2008</span> DHS</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span><span class="er">*</span><span class="dv">2008</span> DHS</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> keep variables of interest</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    keep caseid midx v001 v002 v003 v005 v012 v022 v024 v025 v106 v190 v116 v023 diarrhea ors nwgt</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    save nigeria2008, replace</span>
@@ -518,11 +521,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>    drop _merge</span>
 <span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>    gen survey<span class="ot">=</span><span class="dv">1</span></span>
-<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>    save nigeria2013anal, replace   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>    save nigeria2013anal, replace   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only the variables of interest</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only the variables of interest</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>kids_2008 <span class="ot">&lt;-</span> kids_2008[,<span class="fu">c</span>(<span class="st">"caseid"</span>, <span class="st">"midx"</span>, <span class="st">"v001"</span>, <span class="st">"v002"</span>, <span class="st">"v003"</span>, <span class="st">"v005"</span>, <span class="st">"v012"</span>, <span class="st">"v022"</span>, <span class="st">"v024"</span>, <span class="st">"v025"</span>, <span class="st">"v106"</span>, <span class="st">"v190"</span>, <span class="st">"v116"</span>, <span class="st">"v023"</span>, <span class="st">"diarrhea"</span>, <span class="st">"ors"</span>, <span class="st">"nwgt"</span>)]</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the household size from this dataset</span></span>
@@ -587,22 +590,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Join household size data to the kids dataset</span></span>
 <span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>kids_2013 <span class="ot">&lt;-</span> kids_2013 <span class="sc">%&gt;%</span></span>
-<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(hh_2013, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"v001"</span>, <span class="st">"v002"</span>, <span class="st">"v003"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(hh_2013, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"v001"</span>, <span class="st">"v002"</span>, <span class="st">"v003"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-2b-append-datasets-stata-rbind-datasets-r" class="level3">
 <h3 class="anchored" data-anchor-id="step-2b-append-datasets-stata-rbind-datasets-r">Step 2b: Append datasets (Stata) / rbind datasets (R)</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Append datasets</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Append datasets</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    use nigeria2008anal, clear</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    gen survey<span class="ot">=</span><span class="dv">0</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    append using nigeria2013anal</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    save nigeria2008_2013, replace</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    save nigeria2008_2013, replace</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>kids_2008<span class="sc">$</span>survey <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># Indicates BASELINE</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>kids_2008<span class="sc">$</span>survey <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># Indicates BASELINE</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>kids_2013<span class="sc">$</span>survey <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Indicates ENDLINE</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>kids_2008<span class="sc">$</span>survey_label <span class="ot">&lt;-</span> <span class="st">"DHS 2008"</span> <span class="co"># Indicates BASELINE</span></span>
@@ -610,22 +613,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">val_labels</span>(kids_2008) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Labels need to removed from the dataset for row binding to happen or else ERROR</span></span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">val_labels</span>(kids_2013) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kids_2008, kids_2013) <span class="co"># Merge the two datasets together</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> <span class="fu">rbind</span>(kids_2008, kids_2013) <span class="co"># Merge the two datasets together</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-3-set-svy-for-pooled-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-set-svy-for-pooled-dataset">Step 3: set svy for pooled dataset</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>use nigeria2008_2013, clear</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>use nigeria2008_2013, clear</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>egen stratum <span class="ot">=</span> <span class="fu">group</span>(v023 survey)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>svyset v001 [pw<span class="ot">=</span>nwgt], <span class="fu">strata</span>(stratum) <span class="fu">singleunit</span>(centered)</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop ors, <span class="fu">over</span>(survey)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop ors, <span class="fu">over</span>(survey) coeflegend</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop ors, <span class="fu">over</span>(survey) coeflegend</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to establish need stratum for each survey because currently they are overlapped (i.e. same stratum value across both surveys)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Need to establish need stratum for each survey because currently they are overlapped (i.e. same stratum value across both surveys)</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>merged<span class="sc">$</span>cluster <span class="ot">&lt;-</span> <span class="fu">paste0</span>(merged<span class="sc">$</span>survey,<span class="st">"_"</span>,merged<span class="sc">$</span>v001)</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>merged<span class="sc">$</span>stratum <span class="ot">&lt;-</span> <span class="fu">paste0</span>(merged<span class="sc">$</span>survey,<span class="st">"_"</span>,merged<span class="sc">$</span>v023)</span>
@@ -649,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>ors_diff <span class="ot">&lt;-</span> <span class="fu">svycontrast</span>(ors_merged, <span class="fu">quote</span>(<span class="st">`</span><span class="at">DHS 2013</span><span class="st">`</span> <span class="sc">-</span> <span class="st">`</span><span class="at">DHS 2008</span><span class="st">`</span>)) <span class="co"># Standard error is needed to calculate the difference</span></span>
 <span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>ors_diff<span class="sc">*</span><span class="dv">100</span></span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(ors_diff)<span class="sc">*</span><span class="dv">100</span> <span class="co"># SE and CI are slightly different to STATA output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(ors_diff)<span class="sc">*</span><span class="dv">100</span> <span class="co"># SE and CI are slightly different to STATA output</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -659,20 +662,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="step-4-run-the-logit-model-of-the-output-variable-on-time">Step 4: Run the logit model of the output variable on time</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Assess changes between <span class="dv">2008</span> and <span class="dv">2013</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    svy<span class="sc">:</span> logit ors survey, or</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> Assess changes between <span class="dv">2008</span> and <span class="dv">2013</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    svy<span class="sc">:</span> logit ors survey, or</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ors.glm <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(ors <span class="sc">~</span> survey, <span class="at">family =</span> quasibinomial, <span class="at">design =</span> svyset_merge, <span class="at">na.action =</span> na.omit)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">OR =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(ors.glm)), <span class="at">ci =</span> <span class="fu">exp</span>(<span class="fu">confint</span>(ors.glm)))) <span class="co">#create a table of results to include odds ratio + CI</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ors.glm <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(ors <span class="sc">~</span> survey, <span class="at">family =</span> quasibinomial, <span class="at">design =</span> svyset_merge, <span class="at">na.action =</span> na.omit)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">OR =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(ors.glm)), <span class="at">ci =</span> <span class="fu">exp</span>(<span class="fu">confint</span>(ors.glm)))) <span class="co">#create a table of results to include odds ratio + CI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-5-control-for-other-variables" class="level3">
 <h3 class="anchored" data-anchor-id="step-5-control-for-other-variables">Step 5: Control for other variables</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> toilet</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span> toilet</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    numlabel, add</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    tab v116</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    tab v116, nol</span>
@@ -687,11 +690,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>xi<span class="sc">:</span> svy<span class="sc">:</span> logit ors survey i.v106 i.v190 hv012 i.toilet rural, or</span>
 <span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> logit ors survey, or</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> logit ors survey, or</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> merged <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>merged <span class="ot">&lt;-</span> merged <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">toilet =</span> <span class="fu">case_when</span>(v116 <span class="sc">&gt;=</span> <span class="dv">11</span> <span class="sc">&amp;</span> v116 <span class="sc">&lt;=</span> <span class="dv">15</span> <span class="sc">~</span> <span class="st">"flush"</span>,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                            v116 <span class="sc">&gt;=</span> <span class="dv">21</span> <span class="sc">&amp;</span> v116 <span class="sc">&lt;=</span> <span class="dv">23</span> <span class="sc">~</span> <span class="st">"latrine"</span>,</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                            v116 <span class="sc">==</span> <span class="dv">31</span> <span class="sc">~</span> <span class="st">"no facility"</span>,</span>
@@ -708,26 +711,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">survey.lonely.psu =</span> <span class="st">"adjust"</span>) <span class="co"># Single unit centered on STATA</span></span>
 <span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>ors.adjust.glm <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(ors <span class="sc">~</span> survey_label <span class="sc">+</span> <span class="fu">as.factor</span>(v106) <span class="sc">+</span> <span class="fu">as.factor</span>(v190) <span class="sc">+</span> hv012 <span class="sc">+</span> toilet <span class="sc">+</span> rural, <span class="at">family =</span> quasibinomial, <span class="at">design =</span> svyset_merge, <span class="at">na.action =</span> na.omit)</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">OR =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(ors.adjust.glm)), <span class="at">ci =</span> <span class="fu">exp</span>(<span class="fu">confint</span>(ors.adjust.glm)))) <span class="co">#create a table of results to include odds ratio + CI</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">OR =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(ors.adjust.glm)), <span class="at">ci =</span> <span class="fu">exp</span>(<span class="fu">confint</span>(ors.adjust.glm)))) <span class="co">#create a table of results to include odds ratio + CI</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 </section>
-<section id="lecture-12-difference-in-differences-analysis-for-coverage" class="level1">
-<h1>Lecture 12: Difference-in-differences analysis for coverage</h1>
+<section id="lecture-10-difference-in-differences-analysis-for-coverage" class="level1">
+<h1>Lecture 10: Difference-in-differences analysis for coverage</h1>
 <p>R users may need to load these libraries</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readstata13)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="setting-up-the-data" class="level3">
 <h3 class="anchored" data-anchor-id="setting-up-the-data">Setting-up the data</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/MY_NAME/Desktop/MPIE/data"</span> <span class="sc">/</span><span class="er">/</span>change this to directory where anc4_nigeria.dta is stored</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">"/Users/MY_NAME/Desktop/MPIE/data"</span> <span class="sc">/</span><span class="er">/</span>change this to directory where anc4_nigeria.dta is stored</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>use anc4_nigeria, clear</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>gen wgt<span class="ot">=</span>v005<span class="sc">/</span><span class="dv">1000000</span></span>
@@ -743,11 +746,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>gen groups<span class="ot">=</span><span class="dv">0</span> <span class="cf">if</span> program<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> v007<span class="sc">==</span><span class="dv">2008</span> </span>
 <span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>replace groups<span class="ot">=</span><span class="dv">1</span> <span class="cf">if</span> program<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> v007<span class="sc">==</span><span class="dv">2013</span> </span>
 <span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>replace groups<span class="ot">=</span><span class="dv">2</span> <span class="cf">if</span> program<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> v007<span class="sc">==</span><span class="dv">2008</span> </span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>replace groups<span class="ot">=</span><span class="dv">3</span> <span class="cf">if</span> program<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> v007<span class="sc">==</span><span class="dv">2013</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>replace groups<span class="ot">=</span><span class="dv">3</span> <span class="cf">if</span> program<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> v007<span class="sc">==</span><span class="dv">2013</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"/Users/MY_NAME/Desktop/MPIE/data/anc4_nigeria.dta"</span>) <span class="co"># change this to where anc4_nigeria.dta is stored</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="st">"/Users/MY_NAME/Desktop/MPIE/data/anc4_nigeria.dta"</span>) <span class="co"># change this to where anc4_nigeria.dta is stored</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wgt =</span> v005<span class="sc">/</span><span class="dv">1000000</span>) </span>
@@ -765,40 +768,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>groups[dat<span class="sc">$</span>program<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>v007<span class="sc">==</span><span class="dv">2013</span>] <span class="ot">&lt;-</span> <span class="dv">3</span> </span>
 <span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>svydata <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">id=</span><span class="sc">~</span>v001, <span class="at">data=</span>dat, <span class="at">weights=</span><span class="sc">~</span>wgt, </span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>                     <span class="at">strata=</span><span class="sc">~</span>v023, <span class="at">survey.lonely.psu=</span><span class="st">"adjust"</span>, <span class="at">nest=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>                     <span class="at">strata=</span><span class="sc">~</span>v023, <span class="at">survey.lonely.psu=</span><span class="st">"adjust"</span>, <span class="at">nest=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="option-1-difference-in-differences-of-proportions" class="level3">
 <h3 class="anchored" data-anchor-id="option-1-difference-in-differences-of-proportions">Option 1: Difference in differences of proportions</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop anc4, <span class="fu">over</span>(groups) </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop anc4, <span class="fu">over</span>(groups) </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>lincom [[_prop_2]<span class="dv">1</span> <span class="sc">-</span> [_prop_2]<span class="dv">0</span>] <span class="sc">-</span> [[_prop_2]<span class="dv">3</span> <span class="sc">-</span> [_prop_2]<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>lincom [[_prop_2]<span class="dv">1</span> <span class="sc">-</span> [_prop_2]<span class="dv">0</span>] <span class="sc">-</span> [[_prop_2]<span class="dv">3</span> <span class="sc">-</span> [_prop_2]<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>anc4_dat <span class="ot">&lt;-</span> <span class="fu">svyby</span>(<span class="sc">~</span>anc4, <span class="sc">~</span>groups, svydata, svyciprop, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>anc4_dat <span class="ot">&lt;-</span> <span class="fu">svyby</span>(<span class="sc">~</span>anc4, <span class="sc">~</span>groups, svydata, svyciprop, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">vartype =</span> <span class="fu">c</span>(<span class="st">"se"</span>,<span class="st">"ci"</span>), <span class="at">method =</span> <span class="st">"logit"</span>)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>anc4_dat</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>anc4_diff <span class="ot">&lt;-</span> <span class="fu">svycontrast</span>(anc4_dat, <span class="fu">quote</span>((<span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="sc">-</span><span class="st">`</span><span class="at">0</span><span class="st">`</span>) <span class="sc">-</span> (<span class="st">`</span><span class="at">3</span><span class="st">`</span><span class="sc">-</span><span class="st">`</span><span class="at">2</span><span class="st">`</span>))) </span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>anc4_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>anc4_diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="option-2-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-logistic-regression">Option 2: Logistic regression</h3>
 <p>Stata code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>xi<span class="sc">:</span> svy<span class="sc">:</span> logit anc4 i.survey<span class="sc">*</span>i.program, or </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>xi<span class="sc">:</span> svy<span class="sc">:</span> logit anc4 i.survey<span class="sc">*</span>i.program, or </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>lincom  _Isurvey_1 <span class="sc">+</span> _IsurXpro_1_1, or  </span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop anc4, <span class="fu">over</span>(v007 region) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>svy<span class="sc">:</span> prop anc4, <span class="fu">over</span>(v007 region) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>anc.adjust.glm <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(anc4 <span class="sc">~</span> <span class="fu">as.factor</span>(survey)<span class="sc">*</span><span class="fu">as.factor</span>(program), </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>anc.adjust.glm <span class="ot">&lt;-</span> <span class="fu">svyglm</span>(anc4 <span class="sc">~</span> <span class="fu">as.factor</span>(survey)<span class="sc">*</span><span class="fu">as.factor</span>(program), </span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">family =</span> quasibinomial, <span class="at">design =</span> svydata, <span class="at">na.action =</span> na.omit)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="at">OR =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(anc.adjust.glm)), <span class="at">ci =</span> <span class="fu">exp</span>(<span class="fu">confint</span>(anc.adjust.glm)))) </span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -806,30 +809,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(anc4_or)</span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">svyby</span>(<span class="sc">~</span><span class="fu">I</span>(anc4 <span class="sc">==</span> <span class="dv">0</span>), <span class="sc">~</span>region<span class="sc">+</span>v007, <span class="at">design =</span> svydata, svyciprop, <span class="at">vartype=</span><span class="st">"ci"</span>, <span class="at">method =</span> <span class="st">"logit"</span>))</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">svyby</span>(<span class="sc">~</span><span class="fu">I</span>(anc4 <span class="sc">==</span> <span class="dv">1</span>), <span class="sc">~</span>region<span class="sc">+</span>v007, <span class="at">design =</span> svydata, svyciprop, <span class="at">vartype=</span><span class="st">"ci"</span>, <span class="at">method =</span> <span class="st">"logit"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">svyby</span>(<span class="sc">~</span><span class="fu">I</span>(anc4 <span class="sc">==</span> <span class="dv">1</span>), <span class="sc">~</span>region<span class="sc">+</span>v007, <span class="at">design =</span> svydata, svyciprop, <span class="at">vartype=</span><span class="st">"ci"</span>, <span class="at">method =</span> <span class="st">"logit"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
-<section id="lecture-16-analyzing-equity" class="level1">
-<h1>Lecture 16: Analyzing equity</h1>
+<section id="lecture-15-analyzing-equity" class="level1">
+<h1>Lecture 15: Analyzing equity</h1>
 <section id="new-packages-needed" class="level3">
 <h3 class="anchored" data-anchor-id="new-packages-needed">new packages needed</h3>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"healthequal"</span>) </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"healthequal"</span>) </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.package</span>(<span class="st">"gglorenz"</span>)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(healthequal)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggloernz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggloernz)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="make-concentration-index-plot" class="level3">
 <h3 class="anchored" data-anchor-id="make-concentration-index-plot">make concentration index plot</h3>
 <p>R code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data=</span>subset_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">abs</span>(equity_variable))) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data=</span>subset_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">abs</span>(equity_variable))) <span class="sc">+</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_lorenz</span>() <span class="sc">+</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">linetype =</span> <span class="st">"dashed"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">linetype =</span> <span class="st">"dashed"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
@@ -888,13 +891,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
