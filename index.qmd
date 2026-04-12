@@ -498,7 +498,7 @@ ors.adjust.glm <- svyglm(ors ~ survey_label + as.factor(v106) + as.factor(v190) 
 kable(data.frame(OR = exp(coef(ors.adjust.glm)), ci = exp(confint(ors.adjust.glm)))) #create a table of results to include odds ratio + CI
 ```
 
-# Lecture 12: Difference-in-differences analysis for coverage
+# Lecture 10: Difference-in-differences analysis for coverage
 
 R users may need to load these libraries
 ```{r, eval=FALSE}
@@ -599,7 +599,7 @@ kable(svyby(~I(anc4 == 1), ~region+v007, design = svydata, svyciprop, vartype="c
 
 
 
-# Lecture 16: Analyzing equity
+# Lecture 15: Analyzing equity
 ### new packages needed
 R code:
 ```{r, eval=FALSE}
