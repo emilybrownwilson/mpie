@@ -8,7 +8,7 @@ title: "MPIE CODE FROM LECTURES"
 ### R users may need to install/load libraries
 R code:
 ```{r, eval=FALSE}
-install.packages("readstata13")
+install.packages("haven")
 install.packages("tidyverse")
 install.packages("survey")
 install.packages("freqtables")
