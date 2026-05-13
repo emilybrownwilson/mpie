@@ -599,7 +599,7 @@ kable(svyby(~I(anc4 == 1), ~region+v007, design = svydata, svyciprop, vartype="c
 
 
 
-# Lecture 15: Analyzing equity
+# Lecture 16: Analyzing equity
 ### new packages needed
 R code:
 ```{r, eval=FALSE}
